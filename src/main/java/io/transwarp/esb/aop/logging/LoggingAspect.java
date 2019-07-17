@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Enumeration;
 
 /**
- * @description À¹½ØÇëÇó-´òÓ¡ÈÕÖ¾
+ * @description
  * @author wangyan
  * @date 2019/7/11 15:36
  */
@@ -57,25 +57,25 @@ public class LoggingAspect {
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("test-------");
 
-        //½ÓÊÕµ½ÇëÇó£¬¼ÇÂ¼ÇëÇóÄÚÈÝ
+        //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ó£¬¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        // ÉèÖÃÇëÇó¿ªÊ¼Ê±¼ä
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ï¿½
         Long startTime = System.currentTimeMillis();
-        // ÌáÈ¡È«²¿²ÎÊý paramJson
+        // ï¿½ï¿½È¡È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ paramJson
         Enumeration<String> paramNames = request.getParameterNames();
         JSONObject paramJson = new JSONObject();
         while (paramNames.hasMoreElements()) {
             String paramName = paramNames.nextElement();
             paramJson.put(paramName, request.getParameter(paramName));
         }
-        //controllerÖÐ½ÓÊÕ²ÎÊýµÄÊµÌåÀà
+        //controllerï¿½Ð½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
         StringBuilder param = new StringBuilder();
         if (joinPoint.getArgs() != null) {
             // param.append(StringUtils.join(joinPoint.getArgs(),','));
             Arrays.asList(joinPoint.getArgs()).forEach(obj -> param.append(",").append(obj));
         }
-        //ÏàÓ¦²ÎÊýÀàºÍÅ×³öÒì³£´¦Àí
+        //ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
         Object result = null;
         Throwable exception = null;
         try {
@@ -85,7 +85,7 @@ public class LoggingAspect {
             throw throwable;
         } finally {
             logger.info(request.getMethod() + " "
-                    + request.getRequestURL() + " ²ÎÊý£º" + paramJson.toJSONString() + param + " ," + (System.currentTimeMillis() - startTime) + "ms," + " ÏìÓ¦½á¹û£º" + result, exception);
+                    + request.getRequestURL() + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + paramJson.toJSONString() + param + " ," + (System.currentTimeMillis() - startTime) + "ms," + " ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½" + result, exception);
         }
         return result;
     }
