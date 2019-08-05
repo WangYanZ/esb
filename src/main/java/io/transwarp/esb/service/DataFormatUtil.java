@@ -23,7 +23,7 @@ public class DataFormatUtil {
     /**
      * @Description: xml convert to json
      * @author wangyan_z
-     * @date 2019Äê7ÔÂ10ÈÕ ÉÏÎç10:50:32
+     * @date 2019ï¿½ï¿½7ï¿½ï¿½10ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:50:32
      */
     public static String XmlToJson(String xmlString){
 
@@ -52,7 +52,7 @@ public class DataFormatUtil {
     /**
      * @Description: json convert to xml
      * @author wangyan_z
-     * @date 2019Äê7ÔÂ10ÈÕ ÉÏÎç10:52:32
+     * @date 2019ï¿½ï¿½7ï¿½ï¿½10ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:52:32
      */
     public static String JsonToXml(String jsonString){
         StringReader input = new StringReader(jsonString);
@@ -82,9 +82,9 @@ public class DataFormatUtil {
         return output.toString();
     }
     /**
-     * @Description: È¥µôxmlÖÐµÄ»»ÐÐºÍ¿Õ¸ñ
+     * @Description: È¥ï¿½ï¿½xmlï¿½ÐµÄ»ï¿½ï¿½ÐºÍ¿Õ¸ï¿½
      * @author wangyan_z
-     * @date 2019Äê7ÔÂ11ÈÕ ÏÂÎç4:05:40
+     * @date 2019ï¿½ï¿½7ï¿½ï¿½11ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½4:05:40
      */
     public static String JsonToXmlReplaceBlank(String jsonString) {
         String str = DataFormatUtil.JsonToXml(jsonString);
@@ -92,6 +92,15 @@ public class DataFormatUtil {
         if (str != null) {
             Pattern p = Pattern.compile("\\s*|\t|\r|\n");
             Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
+    }
+    public static String XmlReplaceBlank(String xmlString) {
+        String dest = "";
+        if (xmlString != null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(xmlString);
             dest = m.replaceAll("");
         }
         return dest;

@@ -1,6 +1,8 @@
 package io.transwarp.esb;
 
+import io.transwarp.esb.socket.SocketServer;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,8 +15,8 @@ public class EsbApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(EsbApplication.class, args);
-
+		ApplicationContext applicationContext = SpringApplication.run(EsbApplication.class, args);
+		applicationContext.getBean(SocketServer.class).start();
 	}
 
 }
