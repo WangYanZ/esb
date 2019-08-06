@@ -1,9 +1,11 @@
 package io.transwarp.esb.socket;
 
+import io.transwarp.esb.config.ApplicationProperties;
 import io.transwarp.esb.resttemplate.RestTemplateCallSophon;
 import io.transwarp.esb.service.DataFormatUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -30,9 +32,11 @@ public class SocketServer {
     private ServerSocket serverSocket;
     //使用多线程，需要线程池，防止并发过高时创建过多线程耗尽资源
     private ExecutorService threadPool = Executors.newCachedThreadPool();
+    @Autowired
+    ApplicationProperties properties;
 
     public void start(){
-        start(8091);
+        start(properties.getSocketPort());
     }
     private void start(Integer port){
         try {

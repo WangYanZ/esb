@@ -30,7 +30,7 @@ sourceCompatibility = '1.8'
 
 
 bootJar {
-    baseName = 'esb'
+    baseName = 'myesb'
     version =  '0.0.1'
 }
 

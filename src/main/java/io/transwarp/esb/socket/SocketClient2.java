@@ -20,7 +20,7 @@ public class SocketClient2 {
     public static void socketClient2F() throws IOException{
         final Logger logger = LoggerFactory.getLogger(SocketClient2.class);
         String host = "127.0.0.1";
-        int port = 8091;
+        int port = 8088;
         Socket socket = new Socket(host, port);
         // 建立连接后获得输出流
         OutputStream outputStream = socket.getOutputStream();
