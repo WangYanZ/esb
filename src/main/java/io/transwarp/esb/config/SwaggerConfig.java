@@ -56,8 +56,8 @@ public class SwaggerConfig implements WebMvcConfigurer{
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
-                .description("API 描述")
+                .title("RESTful API")
+                .description("APITest")
                 .termsOfServiceUrl("http://www.baidu.com/")
                 .version("1.0")
                 .build();

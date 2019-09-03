@@ -1,0 +1,8 @@
+version: '2'
+services:
+  esb-app:
+    image: io.transwarp/myesb
+    ports:
+    - 8090:8080
+    - 8099:8088
+#    network_mode: "host"

@@ -2,18 +2,15 @@ package io.transwarp.esb.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.transwarp.esb.aop.logging.LoggingAspect;
 import io.transwarp.esb.service.DataFormatUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import io.transwarp.esb.service.util.WriteExcelUtil;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @Api(description = "EsbRequestController")
@@ -43,5 +40,12 @@ public class EsbController {
         String descXml = DataFormatUtil.JsonToXmlReplaceBlank(jsonString);
         System.out.println(descXml);
         return jsonString;
+    }
+
+    @ApiOperation(value = "testWriteExcel")
+    @GetMapping(value = "/test_write_excel",produces = "application/vnd.ms-excel")
+    public String testWriteExcel(HttpServletRequest request,HttpServletResponse response){
+        WriteExcelUtil.writeExcel(request,response);
+        return "ok";
     }
 }
