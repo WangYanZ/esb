@@ -2,6 +2,11 @@ package io.transwarp.esb.a.sort;
 
 import io.transwarp.esb.a.BaseUtil;
 
+/*
+ * 快速排序
+ * 最佳O(nlogn)  最差O(n平方)
+ * 稳定的
+ */
 public class QuickSort {
     public static int[] quickSortTest(int[] data) {
         if (data.length == 0) {
